@@ -1,0 +1,89 @@
+.login{
+    position:relative;
+    max-width: 75%;
+      overflow: hidden;
+      margin: auto;
+      font-size: 1vw;
+  }
+
+  .login input {
+    position:absolute;
+    width:30%;
+    margin-left:5%;
+    margin-right:5%;
+  }
+
+  .loginimg{
+
+    width: 119%;
+
+  }
+
+  .login label {
+    position:absolute;
+    text-align: center;
+  }
+
+  .login #usernamelabel{
+    color: rgb(221, 28, 28);
+      position: absolute;
+      right: 25%;
+      top: 30%;
+      padding: 1%;
+      text-align: center;
+      font-size: 20px;
+  }
+
+  .login #user{
+    position: absolute;
+      right: 9%;
+      top: 35%;
+      padding: 1%;
+  }
+
+  *:hover{
+    border-color:red;
+  }
+
+
+  .login #passwordlabel{
+      color: rgb(221, 28, 28);
+      position: absolute;
+      right: 25%;
+      top: 44%;
+      padding: 1%;
+      text-align: center;
+      font-size: 20px;
+  }
+
+  .login #pass{
+    position: absolute;
+      right: 9%;
+      top: 49%;
+      padding: 1%;
+  }
+
+  .login #signup{
+    position: absolute;
+      color: rgb(10, 10, 10);
+      right: 24%;
+      top: 68%;
+  }
+
+  .login #loginbutton {
+    position: absolute;
+    right: 25%;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: bold 30px Arial, Helvetica, sans-serif;
+    color: rgb(221, 28, 28);
+    padding: 6px 14px;
+    border: solid 1px transparent;
+    background: transparent;
+    top: 60%;
+
+
+    }

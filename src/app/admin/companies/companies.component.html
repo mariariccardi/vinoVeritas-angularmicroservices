@@ -1,0 +1,78 @@
+<table class="orangeTable">
+        <tbody>
+          <tr class="searchRow">
+              <td>
+                  <input placeholder="name" [(ngModel)]="companytosearch.name">
+                </td>
+                <td>
+                    <input placeholder="address" [(ngModel)]="companytosearch.address">
+                  </td>
+                <td>
+                  <input placeholder="city" [(ngModel)]="companytosearch.city">
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button class="btn btn-search" (click)="search()"><i class="fas fa-search"></i>Search</button>
+                </td>
+                <td>
+                    <button (click)="clearSearch()">Clear</button>
+                </td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>User</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <input placeholder="insert name" [(ngModel)]="companytoinsert.name">
+            </td>
+            <td>
+              <input placeholder="insert address" [(ngModel)]="companytoinsert.address">
+            </td>
+            <td>
+              <input placeholder="insert city" [(ngModel)]="companytoinsert.city">
+            </td>
+            <td>
+              <select [(ngModel)]="companytoinsert.user.id">
+                <option [ngValue]="undefined" hidden selected>choose an user </option>
+                <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
+              </select>
+            </td>
+              <td>
+              <button (click)="insert()">Insert</button>
+            </td>
+            <td>
+              <button (click)="clear()">Clear</button>
+            </td>
+          </tr>
+          <tr *ngFor="let company of companies">
+            <td>
+              <input [(ngModel)]="company.name">
+            </td>
+            <td>
+              <input [(ngModel)]="company.address">
+            </td>
+            <td>
+              <input [(ngModel)]="company.city">
+            </td>
+            <td>
+              <select [(ngModel)]="company.user.id">
+                <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
+              </select>
+            </td>
+            <td>
+              <button (click)="update(company)">Save</button>
+            </td>
+            <td>
+              <button (click)="delete(company)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>

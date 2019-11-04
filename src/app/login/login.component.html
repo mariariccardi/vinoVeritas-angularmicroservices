@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <form #f="ngForm" class="login">
+    <img class="loginimg" src="../../assets/background.jpg">
+    <label id="usernamelabel" for="user">Username: </label>
+    <input type="text" id="user" name="username" placeholder="Insert username" ngModel>
+    <label id="passwordlabel" for="pass">Password: </label>
+    <input type="password" id="pass" name="password" placeholder="Insert password" ngModel>
+    <button id="loginbutton" type="submit" (click)="login(f)">Login</button>
+
+  </form>
+</div>

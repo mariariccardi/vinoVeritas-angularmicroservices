@@ -1,0 +1,25 @@
+#header{
+    background-color: #6e4a6a;
+  }
+
+  p{
+    margin-top: 10%;
+    margin-left:7%;
+    text-align: center;
+    font-size: 16px;
+    color: #f1f1f1;
+    height: inherit;
+    width: 100%;
+    background-color: #1e282d !important;
+    display: inline;
+  }
+
+  .col-md-4{
+
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  i:hover{
+    background-color: rgb(220, 20, 143);
+  }
