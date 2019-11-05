@@ -12,12 +12,12 @@ import { AbstractService } from './abstractservice';
 export class UserService extends AbstractService<UserDTO>{
   constructor(http:HttpClient){
       super(http);
-      this.type= 'user';
+      this.type= 'api/users';
   }
 
-  login(loginDTO:LoginDTO): Observable<UserDTO>{
+  login(loginDTO:LoginDTO): Observable<any>{
 
-      return this.http.post<any>('http://localhost:8080/'+ this.type + '/login', loginDTO)
+      return this.http.post<any>('http://localhost:8080/api/authenticate', loginDTO)
   }
 
   getAccount(): Observable<UserDTO> {

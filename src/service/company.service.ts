@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class CompanyService extends AbstractService<CompanyDTO>{
 constructor(http: HttpClient){
 super(http);
-this.type='company';
+this.type='vinoVeritas/api/companies';
 
 }
 

@@ -35,8 +35,8 @@ export class UsersComponent implements OnInit {
     this.service.delete(user.id).subscribe(() => this.getUsers());
   }
 
-  insert() {
-    this.service.insert(this.userToInsert).subscribe(() => this.getUsers());
+  insert(user:UserDTO) {
+    this.service.insert(user).subscribe(() => this.getUsers());
     this.clear();
   }
 
@@ -52,7 +52,8 @@ export class UsersComponent implements OnInit {
   search() {
       this.users = [];
       this.usersOld.forEach (u => {
-        if ((!this.userToSearch.username || u.username.toLowerCase().includes(this.userToSearch.username.toLowerCase()))
+        if ((!this.userToSearch.firstName || u.firstName.toLowerCase().includes(this.userToSearch.firstName.toLowerCase()))
+            && (!this.userToSearch.lastName || u.lastName == this.userToSearch.lastName)
             && (!this.userToSearch.userType || u.userType == this.userToSearch.userType)
             && (this.userToSearch.activated === undefined || u.activated == this.userToSearch.activated)) {
           this.users.push(u);

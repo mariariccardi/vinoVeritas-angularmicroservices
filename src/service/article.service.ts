@@ -10,6 +10,6 @@ import { HttpClient } from '@angular/common/http';
 export class ArticleService extends AbstractService<ArticleDTO>{
     constructor(http: HttpClient) {
       super(http);
-      this.type = 'article';
+      this.type = 'vinoVeritas/api/articles';
 }
 }
