@@ -1,4 +1,4 @@
-import { UserDTO } from './userdto';
+
 
 export class CompanyDTO{
 
@@ -10,6 +10,6 @@ export class CompanyDTO{
 
    city: string;
 
-   user: UserDTO;
+
 
 }

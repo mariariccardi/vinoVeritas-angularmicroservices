@@ -39,12 +39,6 @@
             <td>
               <input placeholder="insert city" [(ngModel)]="companytoinsert.city">
             </td>
-            <td>
-              <select [(ngModel)]="companytoinsert.user.id">
-                <option [ngValue]="undefined" hidden selected>choose an user </option>
-                <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
-              </select>
-            </td>
               <td>
               <button (click)="insert()">Insert</button>
             </td>
@@ -61,11 +55,6 @@
             </td>
             <td>
               <input [(ngModel)]="company.city">
-            </td>
-            <td>
-              <select [(ngModel)]="company.user.id">
-                <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
-              </select>
             </td>
             <td>
               <button (click)="update(company)">Save</button>

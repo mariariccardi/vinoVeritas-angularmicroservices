@@ -15,9 +15,7 @@ export class UsersComponent implements OnInit {
   userToInsert: UserDTO;
   userToSearch: UserDTO = new UserDTO();
 
-  constructor(private service: UserService) {
-    this.userToInsert = new UserDTO ();
-  }
+  constructor(private service: UserService) {}
 
   ngOnInit() {
     this.getUsers();
@@ -28,6 +26,8 @@ export class UsersComponent implements OnInit {
   }
 
   update(user: UserDTO) {
+    let e = document.getElementById('usertype_' + user.login) as HTMLSelectElement;
+    user.authorities = [e.options[e.selectedIndex].value];
     this.service.update(user).subscribe(()=> this.getUsers());
   }
 
@@ -53,7 +53,8 @@ export class UsersComponent implements OnInit {
       this.users = [];
       this.usersOld.forEach (u => {
         if ((!this.userToSearch.username || u.username.toLowerCase().includes(this.userToSearch.username.toLowerCase()))
-            && (!this.userToSearch.userType || u.userType == this.userToSearch.userType)) {
+            && (!this.userToSearch.userType || u.userType == this.userToSearch.userType)
+            && (this.userToSearch.activated === undefined || u.activated == this.userToSearch.activated)) {
           this.users.push(u);
         }
       });

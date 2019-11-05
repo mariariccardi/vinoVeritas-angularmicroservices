@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginDTO } from 'src/dto/loginDTO';
+import { LoginDTO } from 'src/dto/logindto';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/service/user.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginDTO: LoginDTO;
+
   constructor(private service: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -19,29 +20,22 @@ export class LoginComponent implements OnInit {
 
   login(f: NgForm): void {
     this.loginDTO = new LoginDTO(f.value.username, f.value.password);
-    this.service.login(this.loginDTO).subscribe((user) => {
 
-          if (user != null) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-
-          switch (user.userType.toString()) {
-
-            case 'ADMIN':{
+    this.service.login(this.loginDTO).subscribe(token => {
+      if (token != null) {
+        const tk = token.id_token;
+        localStorage.setItem('id_token', tk);
+        this.service.getAccount().subscribe(account => {
+          localStorage.setItem('currentUser', JSON.stringify(account));
+          if (account.authorities.includes('ROLE_ADMIN')) {
             this.router.navigate(['/admin-dashboard']);
-            break;
-            }
-
-            case 'USER':{
+          } else if (account.authorities.includes('ROLE_USER')) {
             this.router.navigate(['/user-dashboard']);
-            break;
-            }
-
-            default:
+          } else {
             this.router.navigate(['/login']);
-            }
-    }
-});
+          }
+        });
+      }
+    });
+  }
 }
-}
-
-

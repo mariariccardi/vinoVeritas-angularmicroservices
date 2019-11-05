@@ -1,11 +1,12 @@
-import { UserDTO } from './userdto';
-import { CompanyDTO } from './companydto';
+import { CompanyDTO} from './companydto';
+
 
 export class ArticleDTO {
     id: number;
     name: string;
     year: number;
-    company: CompanyDTO;
+    companyId: number;
+    companyName: string;
     price: number;
-    user: UserDTO;
+
 }

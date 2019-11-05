@@ -17,19 +17,11 @@ export class ArticlesComponent implements OnInit {
     articles: ArticleDTO [];
     articlesOld: ArticleDTO [];
     companies: CompanyDTO[];
-    users: UserDTO [];
     articleToSearch: ArticleDTO;
     articleToInsert: ArticleDTO;
 
 
-  constructor(private service: ArticleService, private companyService: CompanyService, private userService: UserService) {
-    this.articleToInsert = new ArticleDTO ();
-    this.articleToInsert.company = new CompanyDTO ();
-    this.articleToInsert.user = new UserDTO ();
-    this.articleToSearch = new ArticleDTO ();
-    this.articleToSearch.company = new CompanyDTO ();
-    this.articleToSearch.user = new UserDTO ();
-  }
+  constructor(private service: ArticleService, private companyService: CompanyService) {}
 
   ngOnInit() {
     this.getArticles();
@@ -38,7 +30,6 @@ export class ArticlesComponent implements OnInit {
   getArticles() {
     this.service.getAll().subscribe (articles => this.articles = this.articlesOld = articles);
     this.companyService.getAll().subscribe (companies => this.companies  = companies);
-    this.userService.getAll().subscribe (users => this.users = users);
   }
 
   update(article: ArticleDTO) {
@@ -56,15 +47,13 @@ export class ArticlesComponent implements OnInit {
   
   clear() {
     this.articleToInsert = new ArticleDTO();
-    this.articleToInsert.company = new CompanyDTO ();
-    this.articleToInsert.user = new UserDTO ();
   }
 
   search(){
     this.articles = [];
     this.articlesOld.forEach(a => {
       if ((!this.articleToSearch.name || a.name.toLowerCase().includes(this.articleToSearch.name.toLowerCase()))
-      && (!this.articleToSearch.company.id || a.company.id == this.articleToSearch.company.id)) {
+      && (!this.articleToSearch.companyId || a.companyId == this.articleToSearch.companyId)) {
         this.articles.push(a);
       }
     });
@@ -72,8 +61,6 @@ export class ArticlesComponent implements OnInit {
 
   clearSearch(){
     this.articleToSearch = new ArticleDTO ();
-    this.articleToSearch.company = new CompanyDTO ();
-    this.articleToSearch.user = new UserDTO ();
     this.articles = this.articlesOld;
    
   }

@@ -4,7 +4,7 @@
             <input placeholder="name" [(ngModel)]="articleToSearch.name">
           </td>
           <td>
-            <select [(ngModel)]="articleToSearch.company.id">
+            <select [(ngModel)]="articleToSearch.companyId">
                 <option [ngValue]="undefined" hidden selected>choose a company</option>
                 <option *ngFor="let c of companies" [ngValue]="c.id">{{c.name}}</option>
             </select>
@@ -51,19 +51,13 @@
             <input placeholder="insert year"  type="number" [(ngModel)]="articleToInsert.year">
       </td>
       <td>
-        <select [(ngModel)]="articleToInsert.company.id">
+        <select [(ngModel)]="articleToInsert.companyId">
           <option [ngValue]="undefined" hidden selected>choose a company</option>
           <option *ngFor="let c of companies" [ngValue]="c.id">{{c.name}}</option>
         </select>
       </td>
       <td>
         <input placeholder="insert price"  type="number" [(ngModel)]="articleToInsert.price">
-      </td>
-      <td>
-        <select [(ngModel)]="articleToInsert.user.id">
-          <option [ngValue]="undefined" hidden selected>choose an user</option>
-          <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
-        </select>
       </td>
       <td>
         <button (click)="insert(articleToInsert)">Insert</button>
@@ -80,17 +74,12 @@
         <input class="inputTable" type="number" [(ngModel)]="a.year">
       </td>
       <td>
-        <select [(ngModel)]="a.company.id">
+        <select [(ngModel)]="a.companyId">
           <option *ngFor="let c of companies" [ngValue]="c.id">{{c.name}}</option>
         </select>
       </td>
       <td>
         <input class="inputTable"  type="number" [(ngModel)]="a.price">
-      </td>
-      <td>
-        <select [(ngModel)]="a.user.id">
-          <option *ngFor="let u of users" [ngValue]="u.id">{{u.username}}</option>
-        </select>
       </td>
       <td>
         <button (click)="update(a)">Save</button>
