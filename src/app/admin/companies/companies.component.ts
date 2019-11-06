@@ -12,8 +12,8 @@ export class CompaniesComponent implements OnInit {
 
     companies: CompanyDTO[];
     companiesOld: CompanyDTO[];
-    companytoinsert: CompanyDTO;
-    companytosearch: CompanyDTO;
+    companytoinsert: CompanyDTO = new CompanyDTO ();
+    companytosearch: CompanyDTO = new CompanyDTO ();
    
 
    
@@ -37,11 +37,11 @@ export class CompaniesComponent implements OnInit {
     update(company: CompanyDTO){
         this.service.update(company).subscribe(() => this.getCompanies());
     }
-    insert(){
-        this.service.insert(this.companytoinsert).subscribe(() => this.getCompanies());
-        this.clear();
+    insert(company: CompanyDTO){
+        this.service.insert(company).subscribe(() => this.getCompanies());
+        this.clear(company);
     }
-    clear(){
+    clear(company){
         this.companytoinsert = new CompanyDTO();
     }
     search() {

@@ -6,6 +6,7 @@ export class UserDTO {
     firstName: string;
     lastName: string;
     login: string;
+    password: string;
     userType: Usertype;
     email: string;
     authorities: string [];

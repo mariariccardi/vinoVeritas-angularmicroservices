@@ -17,8 +17,8 @@ export class ArticlesComponent implements OnInit {
     articles: ArticleDTO [];
     articlesOld: ArticleDTO [];
     companies: CompanyDTO[];
-    articleToSearch: ArticleDTO;
-    articleToInsert: ArticleDTO;
+    articleToSearch: ArticleDTO = new ArticleDTO();
+    articleToInsert: ArticleDTO = new ArticleDTO ();
 
 
   constructor(private service: ArticleService, private companyService: CompanyService) {}
@@ -42,10 +42,10 @@ export class ArticlesComponent implements OnInit {
 
   insert (article: ArticleDTO){
     this.service.insert(article).subscribe(() => this.getArticles());
-    this.clear();
+    this.clear(article);
   }
   
-  clear() {
+  clear(article) {
     this.articleToInsert = new ArticleDTO();
   }
 

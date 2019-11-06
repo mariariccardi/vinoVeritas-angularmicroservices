@@ -1,14 +1,24 @@
 <table class="orangeTable">
         <tbody>
             <tr class="searchRow">
-                <td><input placeholder="username" [(ngModel)]="userToSearch.username"></td>
+                <td><input placeholder="Username" [(ngModel)]="userToSearch.login"></td>
+                <td><input placeholder="First name" [(ngModel)]="userToSearch.firstName"></td>
+                <td><input placeholder="Last name" [(ngModel)]="userToSearch.lastName"></td>
                 <td>
-                  <select [(ngModel)]="userToSearch.userType">
+                  <select [(ngModel)]="userToSearch.authorities">
                       <option [ngValue]="undefined" hidden selected>choose a usertype</option>
                       <option value="ADMIN">ADMIN</option>
                       <option value="USER">USER</option>
                   </select>
                 </td>
+                <td><input placeholder="E-mail" [(ngModel)]="userToSearch.email"></td>
+                <td>
+                      <select [(ngModel)]="userToSearch.activated">
+                          <option [ngValue]="undefined" hidden selected>status</option>
+                          <option [ngValue]="true">Activated</option>
+                          <option [ngValue]="false">Deactivated</option>
+                      </select>
+                    </td>
                 <td>
                 </td>
                   <td>
@@ -21,50 +31,78 @@
           <tr>
             <th>Username</th>
             <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Usertype</th>
-            <th></th>
-            <th></th>
+            <th>E-mail</th>
+            <th>Activated</th>
           </tr>
           <tr>
             <td>
-              <input autocomplete="off" placeholder="insert username" type="text" [(ngModel)]="userToInsert.username">
+              <input autocomplete="off" placeholder="insert username" type="text" [(ngModel)]="userToInsert.login">
             </td>
             <td>
-              <input autocomplete="off" placeholder="insert password" type="text" [(ngModel)]="userToInsert.password">
+                  <input autocomplete="off" placeholder="insert password" type="text" [(ngModel)]="userToInsert.password">
             </td>
             <td>
-              <select [(ngModel)]="userToInsert.userType">
+              <input autocomplete="off" placeholder="insert first name" type="text" [(ngModel)]="userToInsert.firstName">
+            </td>
+            <td>
+              <input autocomplete="off" placeholder="insert last name" type="text" [(ngModel)]="userToInsert.lastName">
+            </td>
+            <td>
+              <select [(ngModel)]="userToInsert.authorities">
                 <option [ngValue]="undefined" hidden selected>choose a usertype</option>
                 <option value="ADMIN">ADMIN</option>
                 <option value="USER">USER</option>
               </select>
             </td>
             <td>
+              <input autocomplete="off" placeholder="insert e-mail" type="text" [(ngModel)]="userToInsert.email">
+            </td>
+            <td></td>
+            <td>
               <button (click)="insert(userToInsert)">Insert</button>
             </td>
             <td>
-              <button (click)="clear()">Clear</button>
+              <button (click)="clear(userToInsert)">Clear</button>
             </td>
           </tr>
           <tr *ngFor="let user of users">
             <td>
-              <input autocomplete="off" [(ngModel)]="user.username">
+              <input autocomplete="off" [(ngModel)]="user.login">
             </td>
             <td>
-              <input autocomplete="off" type="password" [(ngModel)]="user.password" (dblclick)='showPassword($event);'>
+              <input autocomplete="off" type="password" disabled>
             </td>
             <td>
-              <select [(ngModel)]="user.userType">
-                <option [selected]="user.userType===ADMIN" value="ADMIN">
-                  ADMIN
+              <input autocomplete="off" [(ngModel)]="user.firstName">
+            </td>
+            <td>
+              <input autocomplete="off" [(ngModel)]="user.lastName">
+            </td>
+            <td>
+              <select [(ngModel)]="user.authorities">
+                <option [ngValue]="undefined" hidden selected>choose a usertype</option>
+                <option value="ROLE_ADMIN">
+                 ADMIN
                 </option>
-                <option [selected]="user.userType===USER" value="USER">
+                <option value="ROLE_USER">
                   USER
                 </option>
               </select>
             </td>
             <td>
-              <button (click)=update(user)>Save</button>
+                <input type="email" [(ngModel)]="user.email">
+            </td>
+            <td>
+                <label class="switch">
+                  <input type="checkbox" [(ngModel)]="user.activated">
+                  <span class="slider round"></span>
+                </label>
+            </td>
+            <td>
+              <button (click)="update(user)">Save</button>
             </td>
             <td>
               <button (click)="delete(user)">Delete</button>

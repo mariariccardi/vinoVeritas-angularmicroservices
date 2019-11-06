@@ -12,8 +12,8 @@ export class UsersComponent implements OnInit {
 
   users: UserDTO [];
   usersOld: UserDTO [];
-  userToInsert: UserDTO;
-  userToSearch: UserDTO = new UserDTO();
+  userToInsert: UserDTO = new UserDTO ();
+  userToSearch: UserDTO = new UserDTO ();
 
   constructor(private service: UserService) {}
 
@@ -37,10 +37,10 @@ export class UsersComponent implements OnInit {
 
   insert(user:UserDTO) {
     this.service.insert(user).subscribe(() => this.getUsers());
-    this.clear();
+    this.clear(user);
   }
 
-  clear(){
+  clear(user){
     this.userToInsert = new UserDTO ();
   }
 
@@ -52,9 +52,11 @@ export class UsersComponent implements OnInit {
   search() {
       this.users = [];
       this.usersOld.forEach (u => {
-        if ((!this.userToSearch.firstName || u.firstName.toLowerCase().includes(this.userToSearch.firstName.toLowerCase()))
+        if  ((!this.userToSearch.login || u.login.toLowerCase().includes(this.userToSearch.login.toLowerCase()))
+            && (!this.userToSearch.firstName || u.firstName.toLowerCase().includes(this.userToSearch.firstName.toLowerCase()))
             && (!this.userToSearch.lastName || u.lastName == this.userToSearch.lastName)
             && (!this.userToSearch.userType || u.userType == this.userToSearch.userType)
+            && (!this.userToSearch.email || u.email.toLowerCase().includes(this.userToSearch.email.toLowerCase()))
             && (this.userToSearch.activated === undefined || u.activated == this.userToSearch.activated)) {
           this.users.push(u);
         }

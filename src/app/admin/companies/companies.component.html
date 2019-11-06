@@ -40,10 +40,10 @@
             <td></td>
             <td></td>
               <td>
-              <button (click)="insert()">Insert</button>
+              <button (click)="insert(companytoinsert)">Insert</button>
             </td>
             <td>
-              <button (click)="clear()">Clear</button>
+              <button (click)="clear(companytoinsert)">Clear</button>
             </td>
           </tr>
           <tr *ngFor="let company of companies">
@@ -56,6 +56,8 @@
             <td>
               <input [(ngModel)]="company.city">
             </td>
+            <td></td>
+            <td></td>
             <td>
               <button (click)="update(company)">Save</button>
             </td>

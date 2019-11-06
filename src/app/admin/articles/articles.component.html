@@ -57,7 +57,7 @@
         <button (click)="insert(articleToInsert)">Insert</button>
       </td>
       <td>
-        <button (click)="clear()">Clear</button>
+        <button (click)="clear(articleToInsert)">Clear</button>
       </td>
     </tr>
     <tr *ngFor="let a of articles">
@@ -75,6 +75,7 @@
       <td>
         <input class="inputTable"  type="number" [(ngModel)]="a.price">
       </td>
+      <td></td>
       <td>
         <button (click)="update(a)">Save</button>
       </td>
